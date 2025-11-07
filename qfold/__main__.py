@@ -1,14 +1,15 @@
 """Entry point for qfold command-line interface."""
+import typer
+import rich
 
-import sys
-from qfold import __version__
-
+from rich.console import Console
 
 def main() -> None:
     """Main entry point for qfold command."""
-    print(f"qfold {__version__}")
+
+    rich.print("Hello, World!")
 
 
 if __name__ == "__main__":
-    main()
+    typer.run(main)
 
