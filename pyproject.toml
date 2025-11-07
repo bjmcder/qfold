@@ -1,0 +1,19 @@
+[build-system]
+requires = ["scikit-build-core>=0.5.0", "nanobind>=1.9.0"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "qfold"
+version = "0.1.0"
+description = "Demo App of Lattice Protein Folding Models"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "LICENSE"}
+
+[project.optional-dependencies]
+dev = []
+
+[tool.scikit-build]
+build-dir = "build"
+wheel.packages = ["qfold"]
+
