@@ -1,0 +1,2 @@
+"""Tests for textual module."""
+

@@ -2,20 +2,8 @@
 
 import sys
 
-import typer
-from rich.console import Console
-from textual.app import App
-
-app_cli = typer.Typer(rich_markup_mode="rich")
-console = Console()
-
-@app_cli.callback(invoke_without_command=True)
-def default_callback(ctx: typer.Context) -> None:
-    """Default callback for qfold command."""
-    if ctx.invoked_subcommand is None:
-        console.print(
-            "qfold - Lattice Protein Folding Models", style="bold"
-        )
+from qfold.app.cli import app_cli
+from qfold.app.textual import launch_textual_app
 
 
 def main() -> None:
@@ -24,10 +12,8 @@ def main() -> None:
     if "--app" in sys.argv:
         # Remove --app from argv to avoid typer parsing it
         sys.argv.remove("--app")
-
-        # Launch Textual app (placeholder for now)
-        textual_app = App()
-        textual_app.run()
+        # Launch Textual app
+        launch_textual_app()
     else:
         # Use typer CLI with Rich formatting
         app_cli()
