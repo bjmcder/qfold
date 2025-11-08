@@ -3,7 +3,6 @@
 import pytest
 
 from qfold.io.sequence import process_sequence
-from qfold.sequence.alphabet import HPAlphabet
 from qfold.sequence.sequence import Sequence
 
 

@@ -50,8 +50,8 @@ def test_cli_callback_with_sequence(
 
     When a sequence is provided, it should be processed and displayed.
     """
-    from qfold.sequence.sequence import Sequence
     from qfold.sequence.alphabet import HPAlphabet
+    from qfold.sequence.sequence import Sequence
 
     # Create a mock sequence
     mock_seq = Sequence("HPPH", HPAlphabet())
@@ -142,8 +142,8 @@ def test_cli_callback_with_different_alphabets(cli_app: typer.Typer) -> None:
     from unittest.mock import MagicMock, patch
 
     with patch("qfold.app.cli.commands.process_sequence") as mock_process:
-        from qfold.sequence.sequence import Sequence
         from qfold.sequence.alphabet import HPAlphabet
+        from qfold.sequence.sequence import Sequence
 
         mock_seq = Sequence("HPPH", HPAlphabet())
         mock_process.return_value = mock_seq

@@ -1,6 +1,5 @@
 """Unit tests for Textual application."""
 
-import pytest
 from textual.app import App
 
 from qfold.app.textual.app import QFoldApp, create_textual_app
