@@ -1,7 +1,8 @@
 """Unit tests for the Alphabet base class."""
 
-import pytest
 from typing import Callable, Dict, Set
+
+import pytest
 
 from qfold.sequence.alphabet import Alphabet
 

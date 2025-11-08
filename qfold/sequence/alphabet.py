@@ -96,6 +96,9 @@ class CustomAlphabet(Alphabet):
                 raise ValueError(
                     "Mapping keys must match the character set exactly."
                 )
+            # Check for duplicate values
+            if len(mapping.values()) != len(set(mapping.values())):
+                raise ValueError("Mapping contains duplicate values.")
             self._mapping = mapping.copy()
         else:
             # Generate mapping automatically in order

@@ -24,7 +24,7 @@ def main() -> None:
     if "--app" in sys.argv:
         # Remove --app from argv to avoid typer parsing it
         sys.argv.remove("--app")
-        
+
         # Launch Textual app (placeholder for now)
         textual_app = App()
         textual_app.run()

@@ -1,7 +1,7 @@
 """Unit tests for the HPAlphabet class."""
 
+
 import pytest
-from typing import Dict, Set
 
 from qfold.sequence.alphabet import HPAlphabet
 
@@ -115,7 +115,6 @@ def test_hp_alphabet_multiple_instances() -> None:
     alphabet2 = HPAlphabet()
 
     chars1 = alphabet1.chars()
-    chars2 = alphabet2.chars()
 
     # Modify one copy
     chars1.add("X")
