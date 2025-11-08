@@ -95,3 +95,95 @@ class SquareLattice(Lattice):
             3: np.array([0.0, -1.0], dtype=float),
         }
 
+
+class TriangularLattice(Lattice):
+    """
+    Concrete class for a 2D triangular lattice.
+
+    Each point has 6 neighbors arranged in a hexagon.
+    Canonical indexing (starting at theta=0, counterclockwise):
+        - [1, 0] -> 0 (right)
+        - [0.5, sqrt(3)/2] -> 1 (60°)
+        - [-0.5, sqrt(3)/2] -> 2 (120°)
+        - [-1, 0] -> 3 (left)
+        - [-0.5, -sqrt(3)/2] -> 4 (240°)
+        - [0.5, -sqrt(3)/2] -> 5 (300°)
+    """
+
+    def __init__(self, a: float = 1.0) -> None:
+        """
+        Initialize a triangular lattice.
+
+        Args:
+            a: Lattice constant (default is 1.0).
+        """
+        sqrt3_half = np.sqrt(3) / 2.0
+        basis_vectors = np.array(
+            [[a, 0.0], [a / 2.0, a * sqrt3_half]], dtype=float
+        )
+        super().__init__(dimension=2, basis_vectors=basis_vectors)
+        self._a = a
+        self._sqrt3_half = sqrt3_half
+
+    def index_to_basis(self) -> Dict[int, np.ndarray]:
+        """
+        Return a mapping from canonical index to basis vector.
+
+        Returns:
+            Dictionary mapping canonical index (0-5) to basis vector
+            numpy array. Indexing starts at theta=0 ([1, 0]) and
+            proceeds counterclockwise.
+        """
+        sqrt3_half = self._sqrt3_half
+        return {
+            0: np.array([1.0, 0.0], dtype=float),
+            1: np.array([0.5, sqrt3_half], dtype=float),
+            2: np.array([-0.5, sqrt3_half], dtype=float),
+            3: np.array([-1.0, 0.0], dtype=float),
+            4: np.array([-0.5, -sqrt3_half], dtype=float),
+            5: np.array([0.5, -sqrt3_half], dtype=float),
+        }
+
+
+class HexagonalLattice(Lattice):
+    """
+    Concrete class for a 2D hexagonal (honeycomb) lattice.
+
+    Each point has 3 neighbors arranged at 120° intervals.
+    Canonical indexing (starting at theta=0, counterclockwise):
+        - [1, 0] -> 0 (right)
+        - [-0.5, sqrt(3)/2] -> 1 (120°)
+        - [-0.5, -sqrt(3)/2] -> 2 (240°)
+    """
+
+    def __init__(self, a: float = 1.0) -> None:
+        """
+        Initialize a hexagonal lattice.
+
+        Args:
+            a: Lattice constant (default is 1.0).
+        """
+        sqrt3_half = np.sqrt(3) / 2.0
+        basis_vectors = np.array(
+            [[a, 0.0], [a / 2.0, a * sqrt3_half]], dtype=float
+        )
+        super().__init__(dimension=2, basis_vectors=basis_vectors)
+        self._a = a
+        self._sqrt3_half = sqrt3_half
+
+    def index_to_basis(self) -> Dict[int, np.ndarray]:
+        """
+        Return a mapping from canonical index to basis vector.
+
+        Returns:
+            Dictionary mapping canonical index (0-2) to basis vector
+            numpy array. Indexing starts at theta=0 ([1, 0]) and
+            proceeds counterclockwise.
+        """
+        sqrt3_half = self._sqrt3_half
+        return {
+            0: np.array([1.0, 0.0], dtype=float),
+            1: np.array([-0.5, sqrt3_half], dtype=float),
+            2: np.array([-0.5, -sqrt3_half], dtype=float),
+        }
+
