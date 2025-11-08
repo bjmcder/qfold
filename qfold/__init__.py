@@ -5,4 +5,3 @@ __version__ = "0.1.0"
 from qfold._core import add
 
 __all__ = ["add"]
-
